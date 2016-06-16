@@ -178,7 +178,6 @@ struct UnbufferedSocketStreamBase
         assert(!sock.isOpen);
         ubyte[1] buff;
         assert(pair[0].receive(buff) == Socket.ERROR);
-        assert(errno == EBADF);
     }
 
     /**
