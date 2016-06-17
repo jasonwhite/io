@@ -182,7 +182,7 @@ struct UnbufferedSocketStreamBase
         sock.close();
         assert(!sock.isOpen);
         ubyte[1] buff;
-        assert(pair[0].receive(buff) == Socket.ERROR);
+        assert(pair[1].receive(buff) == 0);
     }
 
     /**
@@ -316,7 +316,7 @@ struct SocketStreamBase {
 
         sock.write(data);
         assert(other.receive(buff) == Socket.ERROR);
-        assert(errno == EAGAIN);
+        assert(errno == EWOULDBLOCK);
         sock.write(data);
         assert(other.receive(buff) == 10);
         assert(buff[0..10] == data ~ data);
