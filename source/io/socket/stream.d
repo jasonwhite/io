@@ -175,8 +175,6 @@ struct UnbufferedSocketStreamBase
 
     unittest
     {
-        import core.stdc.errno;
-
         auto pair = socketPair();
         auto sock = UnbufferedSocketStream(pair[0]);
         sock.close();
@@ -303,8 +301,6 @@ struct SocketStreamBase {
 
     unittest
     {
-        import core.stdc.errno;
-
         auto pair = socketPair();
         auto sock = SocketStream(pair[0]);
         auto other = pair[1];
