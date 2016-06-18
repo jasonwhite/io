@@ -316,7 +316,7 @@ struct SocketStreamBase {
 
         sock.write(data);
         assert(other.receive(buff) == Socket.ERROR);
-        assert(errno == EWOULDBLOCK);
+        assert(wouldHaveBlocked());
         sock.write(data);
         assert(other.receive(buff) == 10);
         assert(buff[0..10] == data ~ data);
